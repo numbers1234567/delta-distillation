@@ -1,0 +1,20 @@
+services:
+  delta-distillation:
+    container_name: docker-deltadist
+    image: "numbers1234567/deltadist:0.1"
+    volumes:
+     - ../data:/deltadist/data
+     - ../config:/deltadist/config
+     - ../lib:/deltadist/lib
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - capabilities:
+              - gpu
+    shm_size: "8gb"
+    ulimits:
+      memlock: -1
+      stack: 67108864
+    environment:
+      - DISPLAY=$DISPLAY
