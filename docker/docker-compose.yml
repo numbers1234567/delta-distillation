@@ -3,7 +3,7 @@ services:
     container_name: docker-deltadist
     image: "numbers1234567/deltadist:0.1"
     volumes:
-     - ../data:/deltadist/data
+     - ../data:/deltadist/datasets
      - ../config:/deltadist/config
      - ../lib:/deltadist/lib
     deploy:
@@ -18,3 +18,4 @@ services:
       stack: 67108864
     environment:
       - DISPLAY=$DISPLAY
+      - DATASET_PATH=/deltadist/data
