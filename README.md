@@ -258,3 +258,30 @@ We would like to acknowledge the researchers who made these repositories open-so
 * [rwightman/efficientdet-pytorch](https://github.com/rwightman/efficientdet-pytorch)
 * [open-mmlab/mmtracking](https://github.com/open-mmlab/mmtracking)
 * [andreasveit/convnet-aig](https://github.com/andreasveit/convnet-aig)
+
+# Pimienta Lab Additions
+
+The Pimienta Lab makes a few modifications for ease of use.
+
+For simplicity, we assume that you are running this inside a Docker container.
+
+## Docker
+
+Ensure you have pulled the numbers1234567/deltadist image. You can run the docker container interactively with
+
+    docker compose -f docker/docker-compose.yml run -it delta-distillation
+
+Note that we mount the local lib, data, and config directories.
+
+## Dataset Creation
+
+We include .placeholder files in the data directory to indicate the file structure. See above for the dataset format. We also include additional image sets taken from [MEGA](https://github.com/Scalsol/mega.pytorch/tree/master/datasets/ILSVRC2015/ImageSets).
+
+We obtain ImageNet DET from [the official ImageNet site](https://image-net.org/challenges/LSVRC/2015/2015-downloads.php). The COCO VID is not available, so we get VID from [OpenDataLab](https://opendatalab.com/OpenDataLab/ILSVRC2015_VID/tree/main). Ensure that the relevant files are placed into the data directory with the above format before proceeding.
+
+Notice we also need COCO .json files in the Annotations directory. You can generate the JSON files from the data with
+
+    python utils/imagenet2coco_det.py --i /deltadist/datasets/imagenet/ILSVRC2015 -o /deltadist/datasets/imagenet/ILSVRC2015/Annotations
+    python utils/imagenet2coco_vid.py --i /deltadist/datasets/imagenet/ILSVRC2015 -o /deltadist/datasets/imagenet/ILSVRC2015/Annotations
+
+  
