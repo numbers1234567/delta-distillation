@@ -267,7 +267,7 @@ For simplicity, we assume that you are running this inside a Docker container.
 
 ## Docker
 
-Ensure you have pulled the numbers1234567/deltadist image. You can run the docker container interactively with
+Ensure you have pulled the [numbers1234567/deltadist](https://hub.docker.com/repository/docker/numbers1234567/deltadist/general) image. You can run the docker container interactively with
 
     docker compose -f docker/docker-compose.yml run -it delta-distillation
 
